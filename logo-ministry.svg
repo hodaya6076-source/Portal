@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none">
+  <!-- Ministry of National Security trilingual logo (HE/AR/EN) -->
+  <g font-family="Rubik, system-ui, sans-serif" fill="#0C3058">
+    <text x="178" y="18" text-anchor="end" font-size="14" font-weight="800">המשרד לביטחון לאומי</text>
+    <text x="178" y="34" text-anchor="end" font-size="11" font-weight="600">وزارة الأمن القومي</text>
+    <text x="178" y="52" text-anchor="end" font-size="12" font-weight="700">Ministry of National Security</text>
+  </g>
+  <!-- Israeli emblem (menorah inside shield) - simplified -->
+  <g transform="translate(190, 6)">
+    <path d="M22 0 L44 6 V36 C44 50 33 58 22 58 C11 58 0 50 0 36 V6 Z" fill="#0C3058"/>
+    <g fill="#FFFFFF" transform="translate(22, 30)">
+      <!-- Menorah base -->
+      <rect x="-1.5" y="14" width="3" height="3"/>
+      <rect x="-7" y="17" width="14" height="2"/>
+      <!-- Stem -->
+      <rect x="-0.5" y="3" width="1" height="12"/>
+      <!-- 6 curved branches -->
+      <path d="M-0.5 8 C-3 8 -5 6 -5 3 V14" stroke="#FFFFFF" stroke-width="1" fill="none"/>
+      <path d="M-0.5 8 C-5 8 -8 5 -8 1 V14" stroke="#FFFFFF" stroke-width="1" fill="none"/>
+      <path d="M-0.5 8 C-7 8 -10 4 -10 -2 V14" stroke="#FFFFFF" stroke-width="1" fill="none"/>
+      <path d="M0.5 8 C3 8 5 6 5 3 V14" stroke="#FFFFFF" stroke-width="1" fill="none"/>
+      <path d="M0.5 8 C5 8 8 5 8 1 V14" stroke="#FFFFFF" stroke-width="1" fill="none"/>
+      <path d="M0.5 8 C7 8 10 4 10 -2 V14" stroke="#FFFFFF" stroke-width="1" fill="none"/>
+      <!-- 7 candles on top -->
+      <rect x="-10.5" y="-4" width="1" height="3"/>
+      <rect x="-8.5" y="-4" width="1" height="3"/>
+      <rect x="-5.5" y="-4" width="1" height="3"/>
+      <rect x="-0.5" y="-4" width="1" height="3"/>
+      <rect x="4.5" y="-4" width="1" height="3"/>
+      <rect x="7.5" y="-4" width="1" height="3"/>
+      <rect x="9.5" y="-4" width="1" height="3"/>
+      <!-- Olive branches -->
+      <ellipse cx="-15" cy="6" rx="3" ry="6" fill="none" stroke="#FFFFFF" stroke-width="0.7"/>
+      <ellipse cx="15" cy="6" rx="3" ry="6" fill="none" stroke="#FFFFFF" stroke-width="0.7"/>
+    </g>
+    <text x="22" y="52" text-anchor="middle" font-size="3.5" fill="#FFFFFF" font-family="Rubik">ישראל</text>
+  </g>
+</svg>
