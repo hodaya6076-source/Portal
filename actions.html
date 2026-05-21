@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>פעולות עבור משרד הבריאות — מערכת ניהול נשק ורישוי</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Rubik', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand:            '#0068F5',
+            'brand-dark':     '#064DAD',
+            'text-primary':   '#0C3058',
+            'text-secondary': '#5878A4',
+            'text-inverted':  '#F5F9FF',
+            'bg-canvas':      '#F6F9FC',
+            'bg-secondary':   '#F1F5FB',
+            'bg-card-hover':  '#F0F2F5',
+            divider:          '#B5C7E2',
+            'gray-border':    '#D3D4D6',
+            'badge-red':      '#C93435',
+          },
+          borderRadius: {
+            's':  '4px',
+            'm':  '8px',
+            'l':  '16px',
+            'full-pill': '100px',
+          },
+          boxShadow: {
+            'level1':       '0 2px 8px  rgba(6, 77, 173, 0.10)',
+            'level2':       '0 4px 12px rgba(6, 77, 173, 0.15)',
+            'level4':       '0 16px 36px rgba(6, 77, 173, 0.20)',
+          },
+          spacing: {
+            '200': '4px',
+            '300': '8px',
+            '400': '12px',
+            '500': '16px',
+            '550': '20px',
+            '600': '24px',
+            '700': '32px',
+            '800': '40px',
+            '900': '48px',
+            '1000': '64px',
+            '1100': '80px',
+            '1400': '160px',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html, body { background: #F6F9FC; }
+    body { font-family: 'Rubik', system-ui, -apple-system, sans-serif; color: #0C3058; }
+
+    .ltr-num { direction: ltr; unicode-bidi: isolate; }
+
+    /* Action card hover */
+    .action-card {
+      transition:
+        transform 200ms ease,
+        box-shadow 200ms ease,
+        background-color 200ms ease;
+    }
+    .action-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(6, 77, 173, 0.20);
+      background-color: #F0F2F5;
+    }
+    .action-card:hover .action-card__chevron { transform: translateX(-6px); }
+    .action-card__chevron { transition: transform 200ms ease; color: #0C3058; }
+    .action-card:focus-visible { outline: 2px solid #0068F5; outline-offset: 4px; }
+
+    /* Illustration tile - right side of each action card */
+    .illustration-tile {
+      width: 152px;
+      height: 104px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #EBF3FF 0%, #F6F9FC 100%);
+    }
+    .illustration-tile img {
+      width: 114px;
+      height: 104px;
+      object-fit: contain;
+      display: block;
+    }
+
+    * { -webkit-tap-highlight-color: transparent; }
+  </style>
+</head>
+
+<body class="min-h-screen bg-bg-canvas flex flex-col">
+
+  <!-- ============================== -->
+  <!--           HEADER (Top Bar)     -->
+  <!-- ============================== -->
+  <!-- CRITICAL RTL FIX:
+       In dir="rtl", with `justify-between`, the FIRST DOM element appears visually on the RIGHT.
+       Therefore LOGOS come first (visual right), and USER + ACTIONS block second (visual left). -->
+  <header class="bg-white shadow-level1 px-600 py-400 flex items-center justify-between sticky top-0 z-30 min-h-[80px]">
+
+    <!-- Visual RIGHT in RTL = first DOM element: Organization logos -->
+    <div class="flex items-center gap-500 shrink-0">
+      <img src="assets/logo-ministry.svg" alt="המשרד לביטחון לאומי" class="h-12 w-auto" />
+      <span class="w-px h-10 bg-divider" aria-hidden="true"></span>
+      <img src="assets/logo-firearms.svg" alt="האגף לרישוי כלי ירייה" class="h-12 w-auto" />
+    </div>
+
+    <!-- Visual LEFT in RTL = second DOM element: User + action buttons -->
+    <div class="flex items-center gap-400">
+      <div class="flex items-center gap-300">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0C3058" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span class="text-text-primary text-base">ישראל ישראלי</span>
+      </div>
+      <span class="w-px h-9 bg-divider" aria-hidden="true"></span>
+      <button type="button" class="relative h-12 w-12 flex items-center justify-center rounded-m hover:bg-bg-secondary cursor-pointer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0C3058" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+        <span class="absolute top-1.5 left-1.5 bg-badge-red text-text-inverted text-xs leading-none px-200 py-0.5 rounded-full-pill min-w-[18px] h-[18px] flex items-center justify-center font-normal">9</span>
+      </button>
+      <button type="button" class="flex items-center gap-300 h-12 px-500 rounded-m text-brand text-base font-normal hover:bg-bg-secondary cursor-pointer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        <span>פתיחת קריאה</span>
+      </button>
+      <span class="w-px h-9 bg-divider" aria-hidden="true"></span>
+      <button type="button" class="flex items-center gap-300 h-12 px-500 rounded-m text-brand text-base font-normal hover:bg-bg-secondary cursor-pointer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line x1="21" y1="12" x2="9" y2="12" />
+        </svg>
+        <span>התנתקות</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================== -->
+  <!--   PAGE HEADER (title + crumbs) -->
+  <!-- ============================== -->
+  <section class="relative bg-white border-b border-divider">
+    <div class="relative max-w-[1920px] mx-auto px-600 lg:px-1400 pt-700 pb-900">
+
+      <nav class="flex items-center gap-300 mb-500 text-sm" aria-label="פירורי לחם">
+        <a href="portal-arganim.html" class="text-text-secondary leading-[1.6] hover:underline">
+          בחירת ארגון
+        </a>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5878A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+        <span class="text-text-primary leading-[1.6] font-medium" aria-current="page">
+          שירותים זמינים
+        </span>
+      </nav>
+
+      <div class="flex flex-col items-center gap-200 text-center">
+        <h1 class="font-bold text-text-primary text-[24px] sm:text-[28px] lg:text-[32px] leading-[1.5]">
+          פעולות עבור משרד הבריאות
+        </h1>
+        <p class="text-text-primary text-[16px] sm:text-[18px] leading-[1.5]">
+          בחרו את הפעולה הנדרשת מתוך הרשימה כדי להמשיך:
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!--          ACTION CARDS LIST     -->
+  <!-- ============================== -->
+  <!-- RTL row structure (per spec):
+       1) First DOM element = visual RIGHT  : illustration tile
+       2) Middle (flex-1)   = visual MIDDLE : title + subtitle, text-right
+       3) Last DOM element  = visual LEFT   : back-arrow chevron  -->
+  <main class="flex-1 py-1000">
+    <div class="max-w-[1000px] mx-auto px-600 flex flex-col gap-500">
+
+      <!-- ===== Action 1: דוח שנתי מפורט ===== -->
+      <a href="#" class="action-card group block bg-white rounded-m shadow-level1 overflow-hidden cursor-pointer focus:outline-none">
+        <div class="flex items-center min-h-[104px]">
+          <div class="illustration-tile">
+            <img src="assets/card-media-0.svg" alt="" />
+          </div>
+          <div class="flex-1 flex flex-col gap-200 text-right mr-500 min-w-0">
+            <p class="text-text-primary text-[20px] font-medium leading-[1.25] truncate">דוח שנתי מפורט</p>
+            <p class="text-text-secondary text-[16px] leading-[1.5] truncate">הגשת דוח שנתי מפורט לשנת המס הקודמת</p>
+          </div>
+          <span class="action-card__chevron shrink-0 ml-700 mr-500">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- ===== Action 2: דוח רבעוני מקוצר ===== -->
+      <a href="#" class="action-card group block bg-white rounded-m shadow-level1 overflow-hidden cursor-pointer focus:outline-none">
+        <div class="flex items-center min-h-[104px]">
+          <div class="illustration-tile">
+            <img src="assets/card-media-1.svg" alt="" />
+          </div>
+          <div class="flex-1 flex flex-col gap-200 text-right mr-500 min-w-0">
+            <p class="text-text-primary text-[20px] font-medium leading-[1.25] truncate">דוח רבעוני מקוצר</p>
+            <p class="text-text-secondary text-[16px] leading-[1.5] truncate">הגשת דוח רבעוני מקוצר לרבעון האחרון</p>
+          </div>
+          <span class="action-card__chevron shrink-0 ml-700 mr-500">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- ===== Action 3: תשלום מקדמות מס ===== -->
+      <a href="#" class="action-card group block bg-white rounded-m shadow-level1 overflow-hidden cursor-pointer focus:outline-none">
+        <div class="flex items-center min-h-[104px]">
+          <div class="illustration-tile">
+            <img src="assets/card-media-2.svg" alt="" />
+          </div>
+          <div class="flex-1 flex flex-col gap-200 text-right mr-500 min-w-0">
+            <p class="text-text-primary text-[20px] font-medium leading-[1.25] truncate">תשלום מקדמות מס</p>
+            <p class="text-text-secondary text-[16px] leading-[1.5] truncate">תשלום מקדמות מס עבור השנה הנוכחית</p>
+          </div>
+          <span class="action-card__chevron shrink-0 ml-700 mr-500">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- ===== Action 4: החזר מס שבח ===== -->
+      <a href="#" class="action-card group block bg-white rounded-m shadow-level1 overflow-hidden cursor-pointer focus:outline-none">
+        <div class="flex items-center min-h-[104px]">
+          <div class="illustration-tile">
+            <img src="assets/card-media-3.svg" alt="" />
+          </div>
+          <div class="flex-1 flex flex-col gap-200 text-right mr-500 min-w-0">
+            <p class="text-text-primary text-[20px] font-medium leading-[1.25] truncate">החזר מס שבח</p>
+            <p class="text-text-secondary text-[16px] leading-[1.5] truncate">קבלת החזר מס שבח על מכירת נכס</p>
+          </div>
+          <span class="action-card__chevron shrink-0 ml-700 mr-500">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- ===== Action 5: הפקדת ביטוח לאומי ===== -->
+      <a href="#" class="action-card group block bg-white rounded-m shadow-level1 overflow-hidden cursor-pointer focus:outline-none">
+        <div class="flex items-center min-h-[104px]">
+          <div class="illustration-tile">
+            <img src="assets/card-media-4.svg" alt="" />
+          </div>
+          <div class="flex-1 flex flex-col gap-200 text-right mr-500 min-w-0">
+            <p class="text-text-primary text-[20px] font-medium leading-[1.25] truncate">הפקדת ביטוח לאומי</p>
+            <p class="text-text-secondary text-[16px] leading-[1.5] truncate">הפקדת תשלומים לביטוח לאומי באופן מקוון</p>
+          </div>
+          <span class="action-card__chevron shrink-0 ml-700 mr-500">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- ============================== -->
+  <!--             FOOTER             -->
+  <!-- ============================== -->
+  <footer class="bg-white border-t border-divider">
+    <div class="flex items-center justify-between px-800 py-400 w-full max-w-[1920px] mx-auto">
+
+      <!-- Visual RIGHT (first DOM): contact icons -->
+      <div class="flex items-center gap-200">
+        <a href="tel:" class="w-12 h-12 flex items-center justify-center rounded-m hover:bg-bg-secondary text-text-primary" aria-label="טלפון">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.37 1.88.72 2.77a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.31-1.31a2 2 0 0 1 2.11-.45c.89.35 1.82.59 2.77.72A2 2 0 0 1 22 16.92z" />
+          </svg>
+        </a>
+        <a href="mailto:" class="w-12 h-12 flex items-center justify-center rounded-m hover:bg-bg-secondary text-text-primary" aria-label="אימייל">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </a>
+        <a href="#" class="w-12 h-12 flex items-center justify-center rounded-m hover:bg-bg-secondary text-text-primary" aria-label="ווטסאפ">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.52 3.48A11.86 11.86 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.43h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.47-8.43z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="text-text-secondary text-base">© כל הזכויות שמורות למשרד לביטחון לאומי, 2026</div>
+
+      <!-- Visual LEFT (last DOM): policy links + gov logo -->
+      <div class="flex items-center gap-500">
+        <div class="flex items-center gap-500 h-full">
+          <a href="#" class="text-text-primary text-base p-200 rounded-m hover:bg-bg-secondary">נגישות</a>
+          <span class="w-px h-7 bg-divider" aria-hidden="true"></span>
+          <a href="#" class="text-text-primary text-base p-200 rounded-m hover:bg-bg-secondary">תנאי השימוש</a>
+          <span class="w-px h-7 bg-divider" aria-hidden="true"></span>
+          <a href="#" class="text-text-primary text-base p-200 rounded-m hover:bg-bg-secondary">אודות האתר</a>
+        </div>
+        <span class="w-px h-7 bg-divider" aria-hidden="true"></span>
+        <img src="assets/logo-gov.svg" alt="ממשלת ישראל" class="h-[37px] w-auto" />
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.action-card').forEach(card => {
+      card.setAttribute('role', 'link');
+      card.setAttribute('tabindex', '0');
+    });
+  </script>
+</body>
+</html>
